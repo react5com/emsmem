@@ -1,0 +1,25 @@
+{
+  "name": "@emsmem/client",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --loader @swc-node/register/esm --test",
+    "test:watch": "node --loader @swc-node/register/esm --test --watch",
+    "tsc": "tsc --noEmit",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write .",
+    "build": "swc src/index.ts --out-dir build --config-file ./swc.config.json",
+    "dev": "npm run build && node build/src/index.js"
+  },
+  "dependencies": {
+    "@emsmem/native": "*"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.13.5",
+    "@swc/cli": "^0.7.9",
+    "@swc/helpers":"^0.5.17",
+    "@swc-node/register":"^1.11.1",
+    "@types/node": "^24.10.0",
+    "typescript": "^5.9.3"
+  }
+}

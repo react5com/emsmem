@@ -1,0 +1,24 @@
+{
+  "name": "@emsmem/native",
+  "version": "0.1.0",
+  "description": "A sample C++ NLP library compiled to WebAssembly",
+  "main": "build_wasm/a.out.js",
+  "types": "build_wasm/interface.d.ts",
+  "module": "build_wasm/a.out.js",
+  "type": "module",
+  "private": true,
+  "files": [
+    "build_wasm/a.out.js",
+    "build_wasm/interface.d.ts",
+    "build_wasm/a.out.wasm"
+  ],
+  "scripts": {
+    "build": "node scripts/select-build.js",
+    "build:nix": "bash build_wasm.sh",
+    "build:win": "build_wasm.bat",
+    "test": ""
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

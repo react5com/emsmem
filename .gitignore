@@ -39,3 +39,16 @@
 
 # debug information files
 *.dwo
+
+# Emscripten generated files
+*.wasm
+*.mem
+*.data
+*.js
+*.wasm.map
+
+# Node
+node_modules/
+build_wasm/
+build/
+.DS_Store
