@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Memory management examples in C++ WebAssembly",
   "private": true,
-  "homepage": "https://github.com/alfed7/emsmem#readme",
+  "homepage": "https://github.com/react5com/emsmem#readme",
   "bugs": {
-    "url": "https://github.com/alfed7/emsmem/issues"
+    "url": "https://github.com/react5com/emsmem/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alfed7/emsmem.git"
+    "url": "git+https://github.com/react5com/emsmem.git"
   },
   "license": "MIT",
   "author": "Alexander Fedorenko",
@@ -26,6 +26,7 @@
     "test:client": "npm --workspace=@emsmem/client run test",
     "test": "npm run test:native && npm run test:client",
     "dev:client": "npm --workspace=@emsmem/client run dev",
-    "dev": "npm run build:native && npm run dev:client"
+    "dev:native": "npm --workspace=@emsmem/native run dev",
+    "dev": "npm run dev:native && npm run dev:client"
   }
 }

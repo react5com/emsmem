@@ -22,6 +22,11 @@ Repository::~Repository()
   printf("Repository destructor called\n");
 }
 
+std::string Repository::getName() const
+{
+  return "MyRepository";
+}
+
 Entity &Repository::getFirstEntity() const
 {
   return result[0];
@@ -37,14 +42,23 @@ std::vector<Entity>& Repository::getAllEntities() const
 #include <emscripten/bind.h>
 using namespace emscripten;
 
+std::vector<int> getIndexes()
+{
+  return std::vector<int>{4, 5, 6};
+}
+
 EMSCRIPTEN_BINDINGS(my_module)
 {
+  register_vector<int>("IntVector");
+  function("getIndexes", getIndexes);
   register_vector<Entity>("EntityVector");
   class_<Entity>("Entity")
       .constructor<int>()
       .function("getX", &Entity::getX);
   class_<Repository>("Repository")
       .constructor<>()
+      .function("getName", &Repository::getName)
+      .function("getIndexes", &Repository::getIndexes)
       .function("getAllEntities", &Repository::getAllEntities, return_value_policy::reference())
       .function("getFirstEntity", &Repository::getFirstEntity, return_value_policy::reference())
       .function("getFirstEntityVal", &Repository::getFirstEntity);

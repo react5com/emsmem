@@ -44,8 +44,10 @@
 *.wasm
 *.mem
 *.data
-*.js
 *.wasm.map
+
+.env
+.env.*
 
 # Node
 node_modules/

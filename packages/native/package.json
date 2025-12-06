@@ -13,10 +13,11 @@
     "build_wasm/a.out.wasm"
   ],
   "scripts": {
-    "build": "node scripts/select-build.js",
+    "build": "node scripts/select-build.js --release",
     "build:nix": "bash build_wasm.sh",
     "build:win": "build_wasm.bat",
-    "test": ""
+    "test": "",
+    "dev": "node scripts/select-build.js --debug"
   },
   "devDependencies": {
     "typescript": "^5.9.3"

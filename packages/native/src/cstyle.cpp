@@ -1,7 +1,7 @@
-#include <emscripten.h>
-#include <sanitizer/lsan_interface.h>
 #include <stdio.h>
 #include <string>
+#include <emscripten.h>
+#include <sanitizer/lsan_interface.h>
 
 extern "C"
 {

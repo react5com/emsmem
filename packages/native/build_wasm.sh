@@ -12,10 +12,18 @@ fi
 echo "Setting up Emscripten environment..."
 source ${EMSDK}/emsdk_env.sh
 
+echo "Build type: $1"
+
+if [ "$1" = "--release" ]; then
+    OPTIMIZATION_FLAGS="-O3"
+    DEBUG_FLAGS=""
+else
+    OPTIMIZATION_FLAGS=""
+    DEBUG_FLAGS="-gsource-map -fsanitize=address"
+fi
+
 em++ ../src/cstyle.cpp ../src/repository.cpp ../src/entity.cpp \
   -o a.out.js \
-  -gsource-map \
-  -fsanitize=address \
   -sEXPORTED_RUNTIME_METHODS='["ccall","cwrap","UTF8ToString", "addFunction", "removeFunction"]' \
   -sALLOW_MEMORY_GROWTH \
   -sALLOW_TABLE_GROWTH \
@@ -23,5 +31,7 @@ em++ ../src/cstyle.cpp ../src/repository.cpp ../src/entity.cpp \
   --emit-tsd interface.d.ts \
   -sMODULARIZE \
   -sEXPORT_ES6 \
+  $DEBUG_FLAGS \
+  $OPTIMIZATION_FLAGS \
   -std=c++20 \
   -lembind

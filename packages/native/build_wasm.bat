@@ -13,9 +13,15 @@ if not exist "%EMSDK%" (
 echo Setting up Emscripten environment...
 call "%EMSDK%\emsdk_env.bat"
 
+if "%1"=="--release" (
+  set OPTIMIZATION_FLAGS=-O3
+  set DEBUG_FLAGS=
+) else (
+  set OPTIMIZATION_FLAGS=
+  set DEBUG_FLAGS=-gsource-map -fsanitize=address
+)
+
 em++ ../src/cstyle.cpp ../src/repository.cpp ../src/entity.cpp -o a.out.js ^
-  -gsource-map ^
-  -fsanitize=address ^
   -sEXPORTED_RUNTIME_METHODS="[\"ccall\",\"cwrap\",\"UTF8ToString\",\"addFunction\",\"removeFunction\"]" ^
   -sALLOW_MEMORY_GROWTH ^
   -sALLOW_TABLE_GROWTH ^
@@ -23,5 +29,7 @@ em++ ../src/cstyle.cpp ../src/repository.cpp ../src/entity.cpp -o a.out.js ^
   --emit-tsd interface.d.ts ^
   -sMODULARIZE ^
   -sEXPORT_ES6 ^
+  %OPTIMIZATION_FLAGS% ^
+  %DEBUG_FLAGS% ^
   -std=c++20 ^
   -lembind

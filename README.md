@@ -5,7 +5,7 @@ This repository explores memory management approaches in WebAssembly (Wasm) and 
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Memory Management Topics Illustrated](#memory-management-approaches)
+- [Memory Management Topics Illustrated](#memory-management-topics-illustrated)
 - [Setup and Usage](#setup-and-usage)
 - [Contributing](#contributing)
 - [License](#license)
